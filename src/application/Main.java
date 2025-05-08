@@ -1,21 +1,23 @@
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) { // palco primarystage
 		try {
-			BorderPane root = new BorderPane(); // painel
-			Scene scene = new Scene(root,400,400); // cena scene
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch(Exception e) {
+			Parent parent = FXMLLoader.load(getClass().getResource("/gui/Tela.fxml")); // parent classe generica
+			Scene scene = new Scene(parent); // cena
+			primaryStage.setScene(scene); // palco terá essa cena
+			primaryStage.show(); // mostrar palco
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
